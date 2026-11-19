@@ -22,16 +22,13 @@
 
 ## Input｜输入框
 
-- **组件名：** `Input`。
-- **组件层级结构：** `Input > [Label] + Control + [Message]`；`Control > [Leading] + Value + [Clear] + [Focus Ring]`。
-- **Variant 维度：** `Text / Search / Textarea`。单行用 `bg/surface`、`border/control`；Textarea 3 行起，达上限内滚。Composer 另作组合。
-- **Size 维度：** `SM / MD / LG`；Textarea 仅 MD；圆角 8。SM 用 `Body/Dense`，其余 `Body/Default`。
-- **State 维度：** `Default / Hover / Focus / Error / ErrorFocus / ReadOnly / Disabled`。错误用 `status/danger/fg`；ErrorFocus 保留外环；只读可复制。
-- **图标位：** 搜索图标 16；清除复用 IconOnly，空值隐藏；Text 前图标可选。
-- **文案 slot：** `Label / Value / Message`；用独立 `Content=Placeholder/Filled` 切换 `text/placeholder`、`text/primary`。
-- **自动布局建议：** 根 V；Control H；Control、Value Fill；图标 Fixed，长文字换行增高。
-- **内外边距建议：** 水平 12、图文 8、标签至控件至提示各 4；父层设外距。
-- **命名建议：** 默认 `Variant=Text, Size=MD, State=Default, Content=Placeholder`；属性 `Label / Value / Message / Show Label / Show Message / Show Clear`。
+- **结构：** `Input > Row + [Help Text / Error Text]`；`Row > [Field Label] + Control`；`Control > [搜索图标] + Placeholder / Value + [Clear Search]`。
+- **原稿默认态：** `text` 32 高、白底、圆角 8（名称字段）；`search` 32 高、圆角 6（商品筛选）；`search-compact` 28 高、圆角 6（收藏夹、技能页）。两个搜索框均无底色填充，描边 `#E5E5E5`。多行对话沿用「输入功能」。
+- **补充状态：** 原稿未画 `hover / focus / focus-filled / filled / error / error-empty / error-focus / error-focus-empty / read-only / disabled / disabled-filled` 的样式。沿用 1 px 描边避免内容位移；错误描边和提示用已确认的 `#FF6C3A`。帮助和错误互斥。
+- **属性：** 标签、占位、值、帮助及错误文案可编辑；标签、必填星号、帮助和清除图标默认关闭。搜索与表单分别维护填充值和错误文案。
+- **布局：** 根 V，字段行和控件 H；控件宽 Fill；左右内距文字 12、搜索 8；行间 4。沿用苹方及现有颜色、圆角和间距变量。
+- **默认：** `type=text, state=default`。
+- **验收样本：** 名称字段 153 × 32；商品筛选约 165.67 × 32；收藏夹搜索 200 × 28。宽度是业务行实测值。替换时保留占位位置、搜索图标及原稿的截断规则。
 
 ## Select｜选择器
 
