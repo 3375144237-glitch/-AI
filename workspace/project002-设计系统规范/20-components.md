@@ -32,16 +32,12 @@
 
 ## Select｜选择器
 
-- **组件名：** `Select`（触发器）、`Select/Menu`、`Select/Option`。
-- **组件层级结构：** `Select > Label + Trigger + [Message]`；`Trigger > Value + Chevron + [Focus Ring]`；`Menu > [Input/Search] + Option* 或 Feedback`。
-- **Variant 维度：** `Single / Multiple`；`Show Search` 控制搜索，多选溢出 `+N`。
-- **Size 维度：** 触发器 `SM / MD / LG`、圆角 8；选项 `SM / MD=32/36`，最多显示 8 项后滚动。
-- **State 维度：** 触发器 `Default / Hover / Focus / Open / Error / ErrorFocus / Disabled`；菜单 `Ready / Loading / NoResults / Error`；选项 `Default / Highlighted / Selected / SelectedHighlighted / Disabled`。用勾区分选中，高亮用 `bg/subtle`；错误可重试。
-- **图标位：** Chevron、Check 各 16。多选用可移除 Tag。
-- **文案 slot：** `Label / Value / Message / Option Label`；`Content=Placeholder/Filled` 区分「请选择渠道」与「全部渠道」。
-- **自动布局建议：** 根 V，Trigger H、Value Fill；Menu V，与触发器下沿对齐同宽，独立 Overlay；用 `bg/overlay`＋`Elevation/Popover`。
-- **内外边距建议：** 触发器水平 12、间距 8；菜单内边距和偏移各 4，选项水平 8。
-- **命名建议：** 默认 `Variant=Single, Size=MD, State=Default, Content=Placeholder`。
+- **母版：** `Select`、`Select / Menu`、`Select / Option`。值 Fill，尾图标 16；标签和提示由父表单布局管理。自由录入用 Input，操作用 Button。
+- **原稿默认：** `style=field` 高 32、圆角 8、左右 12、图文间隔 8；`style=filter` 高 32、圆角 6、左右 8、图文间隔 6。白底、1 px 内描边 `#E5E5E5`（`border/subtle`）、12 px 苹方。筛选保留末尾省略。
+- **分屏：** 固定、展开、全屏筛选行实测 374 / 574 / 1034；搜索及两个筛选等宽，间隔 8，结果数 Hug。原稿控件宽分别约 99 / 166 / 319。
+- **补充状态：** 默认、占位、悬停、聚焦、展开、错误、禁用、多选摘要、可清除。聚焦用 `#2ABD90`，错误用 `#FF6C3A`。清除后回占位；禁用不响应。
+- **菜单：** 单选、可搜索、多选、无匹配、加载、失败；选项含默认、悬停、选中、禁用，高 32。菜单 V，距触发器 4，与左边对齐，窄栏建议至少 160 且不超视口；最多显示 8 项后滚动。多选保留一个可读值及 `+N`。
+- **验收：** [Figma 预览草稿](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=110-4754)。已核对默认态的几何与颜色，新增苹方文案及菜单导出待复核。
 
 ## Tag｜标签
 
