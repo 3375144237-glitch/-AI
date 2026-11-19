@@ -22,13 +22,13 @@
 
 ## Input｜输入框
 
-- **结构：** `Input > Row + [Help Text / Error Text]`；`Row > [Field Label] + Control`；`Control > [搜索图标] + Placeholder / Value + [Clear Search]`。
+- **结构：** `Input > Row > [Field Label] + Control Stack`；`Control Stack > Control + [Help Text / Error Text]`；`Control > [搜索图标] + Placeholder / Value + [Clear Search]`。
 - **原稿默认态：** `text` 32 高、白底、圆角 8（名称字段）；`search` 32 高、圆角 6（商品筛选）；`search-compact` 28 高、圆角 6（收藏夹、技能页）。两个搜索框均无底色填充，描边 `#E5E5E5`。多行对话沿用「输入功能」。
-- **补充状态：** 原稿未画 `hover / focus / focus-filled / filled / error / error-empty / error-focus / error-focus-empty / read-only / disabled / disabled-filled` 的样式。沿用 1 px 描边避免内容位移；错误描边和提示用已确认的 `#FF6C3A`。帮助和错误互斥。
-- **属性：** 标签、占位、值、帮助及错误文案可编辑；标签、必填星号、帮助和清除图标默认关闭。搜索与表单分别维护填充值和错误文案。
-- **布局：** 根 V，字段行和控件 H；控件宽 Fill；左右内距文字 12、搜索 8；行间 4。沿用苹方及现有颜色、圆角和间距变量。
-- **默认：** `type=text, state=default`。
-- **验收样本：** 名称字段 153 × 32；商品筛选约 165.67 × 32；收藏夹搜索 200 × 28。宽度是业务行实测值。替换时保留占位位置、搜索图标及原稿的截断规则。
+- **状态：** 3 类型 × 12 状态，默认 `text / default`；其他状态为补充。1 px 描边，聚焦 `#2ABD90`，错误 `#FF6C3A`；错误留值，帮助与错误互斥。
+- **属性：** 标签、占位、值、帮助和错误文案可编辑；标签、星号、帮助和清除图标默认隐藏；已有外置标签时不再显示内置标签。
+- **对齐：** 行和控件 H，控件栈 V Fill；标签与框间隔 8，标签对框垂直居中；星号间隔 2。提示在框下 4，与框左边对齐。左右内距文字 12、搜索 8；搜索图标 14，文字左对齐，图文间隔 8，长文案末尾省略。沿用苹方及现有变量。
+- **业务布局：** 名称框填充字段剩余宽，表单列距 16；商品筛选框和两个下拉框等宽，间距 8，结果数 Hug；收藏夹搜索固定 200 × 28，右对齐并垂直居中，标题栏左右留边 16、上下 12。
+- **Figma：** [Input / Preview](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=90-3876) 展示状态、原稿业务行及用法。
 
 ## Select｜选择器
 
