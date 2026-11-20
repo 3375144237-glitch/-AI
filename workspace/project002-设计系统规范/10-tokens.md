@@ -1,12 +1,12 @@
 # 10 Tokens｜售卖 AI Web 后台
 
 - 范围：中高密度 ToB 后台；下一份：[20 Components](20-components.md)。
-- 记法：`@集合/路径` 代表变量别名；双模式表中，同一行只创建一个变量。
-- 沿用目标文件中名称、类型和用途一致的变量。类型或用途不符时先列出冲突，不覆盖旧值。
+- 记法：`@集合/路径` 代表变量别名。当前交付仅使用 Light。
+- 现有 Figma 集合：`Color` 38 项、`Spacing` 8 项、`Radius` 7 项、`Shadow` 2 项。几何基础路径沿用现有集合；尺寸和描边宽度是实施建议，缺少变量时不复制建集合。
 
-## Collection：`Primitives`
+## Collections：`Spacing`、`Radius` 与基础尺寸建议
 
-- Mode：`Default`。数值单位 px；基础色只作别名来源。
+- Mode：`Default`。数值单位 px；下表的 `palette/*` 归 `Color`。
 - Scope：`palette/*` 隐藏；`space/*` 用 `GAP`；`radius/*` 用 `CORNER_RADIUS`；`size/*` 用 `WIDTH_HEIGHT`；`stroke/*` 用 `STROKE_FLOAT`。
 
 | Token 路径 | 类型 | 含义 | Default 建议值 |
@@ -14,7 +14,6 @@
 | `palette/mint/500` | Color | 主色 | `#2ABD90` |
 | `palette/mint/600` | Color | 主色悬停 | `#24AE84` |
 | `palette/mint/700` | Color | 主色按下 | `#1EA078` |
-| `palette/mint/950` | Color | 主色底上的文字和图标 | `#10251E` |
 | `space/4` | Number | 微间距 | `4` |
 | `space/8` | Number | 图文、同组控件 | `8` |
 | `space/12` | Number | 单元格、紧凑控件横向内边距 | `12` |
@@ -30,8 +29,8 @@
 | `radius/xl` | Number | 弹窗 | `16` |
 | `radius/composer` | Number | 对话输入容器 | `24` |
 | `radius/pill` | Number | 胶囊和计数角标 | `999` |
-| `size/control/sm` | Number | 紧凑控件 | `32` |
-| `size/control/md` | Number | 默认控件 | `36` |
+| `size/control/sm` | Number | 紧凑控件 | `28` |
+| `size/control/md` | Number | 默认控件 | `32` |
 | `size/control/lg` | Number | 宽松控件 | `40` |
 | `size/icon/sm` | Number | 标签和排序图标 | `12` |
 | `size/icon/md` | Number | 控件图标 | `16` |
@@ -39,60 +38,64 @@
 | `stroke/default` | Number | 描边和分隔线 | `1` |
 | `stroke/focus` | Number | 焦点环描边 | `2` |
 
-## Collection：`Semantic`
+## Collection：`Color`
 
-- Mode：`Light`（默认）、`Dark`。本集合均为 Color。
+- Mode：`Light`（本轮使用）。本集合均为 Color；`color/shadow/*` 归 `Shadow`。
 - Scope：文字用 `TEXT_FILL`；背景用 `FRAME_FILL`、`SHAPE_FILL`；描边用 `STROKE_COLOR`；阴影用 `EFFECT_COLOR`。操作色和状态前景按实际绑定补充图标填充及描边范围。
 
-| Token 路径 | 含义 | Light 建议值 | Dark 建议值 |
-| --- | --- | --- | --- |
-| `color/bg/canvas` | 页面背景 | `#F7F8FA` | `#11161A` |
-| `color/bg/surface` | 内容和表格 | `#FFFFFF` | `#191F24` |
-| `color/bg/subtle` | 表头和弱背景 | `#F5F7FA` | `#20282F` |
-| `color/bg/overlay` | 浮层表面 | `@Semantic/color/bg/surface` | `@Semantic/color/bg/subtle` |
-| `color/bg/selected` | 选中底 | `#E5F4EE` | `#203D34` |
-| `color/bg/disabled` | 禁用底 | `#EFF1F3` | `#252D34` |
-| `color/bg/scrim` | 遮罩 | `rgba(0,0,0,0.40)` | `rgba(0,0,0,0.60)` |
-| `color/text/primary` | 标题、正文、数据 | `#333333` | `#EFF2F4` |
-| `color/text/secondary` | 表头、辅助文字 | `#666666` | `#B4C0C8` |
-| `color/text/placeholder` | 输入占位 | `#6B7077` | `#A7B3BD` |
-| `color/text/disabled` | 禁用前景 | `#777D84` | `#9AA7B2` |
-| `color/text/on-action` | 主色底前景 | `@Primitives/palette/mint/950` | `@Primitives/palette/mint/950` |
-| `color/border/subtle` | 容器轮廓 | `#E5E5E5` | `#343E47` |
-| `color/border/table` | 表格行分隔线 | `#EBECF0` | `#303A43` |
-| `color/border/control` | 可操作控件边界 | `#83898F` | `#707E8A` |
-| `color/border/focus` | 键盘焦点环 | `#205FCC` | `#91B8FF` |
-| `color/action/primary` | 主按钮底、品牌图形 | `@Primitives/palette/mint/500` | `@Primitives/palette/mint/500` |
-| `color/action/hover` | 主按钮悬停 | `@Primitives/palette/mint/600` | `@Primitives/palette/mint/600` |
-| `color/action/pressed` | 主按钮按下 | `@Primitives/palette/mint/700` | `@Primitives/palette/mint/700` |
-| `color/action/text` | 文字操作、链接 | `#14765A` | `#64D9AF` |
-| `color/status/success/fg` | 成功前景 | `#17664E` | `#92E2BF` |
-| `color/status/success/bg` | 成功背景 | `#E6F5EE` | `#20382F` |
-| `color/status/warning/fg` | 预警前景 | `#955014` | `#F7BD72` |
-| `color/status/warning/bg` | 预警背景 | `#FFF2E0` | `#3A2D20` |
-| `color/status/danger/fg` | 失败、错误前景 | `#B42318` | `#FFAAA3` |
-| `color/status/danger/bg` | 失败、错误背景 | `#FDECEA` | `#412628` |
-| `color/status/info/fg` | 进行中前景 | `#245DC0` | `#A5C9FF` |
-| `color/status/info/bg` | 进行中背景 | `#EAF2FF` | `#202F46` |
-| `color/status/neutral/fg` | 中性状态前景 | `@Semantic/color/text/secondary` | `@Semantic/color/text/secondary` |
-| `color/status/neutral/bg` | 中性状态背景 | `@Semantic/color/bg/subtle` | `@Semantic/color/bg/subtle` |
-| `color/shadow/popover` | 下拉阴影 | `rgba(0,0,0,0.10)` | `rgba(0,0,0,0.35)` |
-| `color/shadow/modal` | 弹窗阴影 | `rgba(0,0,0,0.16)` | `rgba(0,0,0,0.50)` |
+| Token 路径 | 含义 | Light 建议值 |
+| --- | --- | --- |
+| `color/bg/canvas` | 页面背景 | `#F7F8FA` |
+| `color/bg/surface` | 内容和表格 | `#FFFFFF` |
+| `color/bg/subtle` | 表头、弱背景及灰底按钮 | `#F5F7FA` |
+| `color/bg/overlay` | 浮层表面 | `@Color/color/bg/surface` |
+| `color/bg/selected` | 选中底 | `#E5F4EE` |
+| `color/bg/disabled` | 禁用底 | `#EFF1F3` |
+| `color/bg/scrim` | 遮罩 | `rgba(0,0,0,0.40)` |
+| `color/text/primary` | 标题、正文、数据、灰底和线框按钮文字 | `#333333` |
+| `color/text/secondary` | 表头、辅助文字 | `#666666` |
+| `color/text/on-action` | 主按钮及警示按钮前景 | `#FFFFFF` |
+| `color/border/subtle` | 线框按钮、输入、选择器和表格外框 | `#E5E5E5` |
+| `color/border/table` | 表格内行分隔线 | `#EBECF0` |
+| `color/border/focus` | 独立键盘焦点指示 | `#205FCC` |
+| `color/action/primary` | 主按钮底、输入聚焦 | `@Color/palette/mint/500` |
+| `color/action/hover` | 主按钮、文字按钮悬停 | `@Color/palette/mint/600` |
+| `color/action/pressed` | 主按钮、文字按钮按下 | `@Color/palette/mint/700` |
+| `color/action/text` | 文字操作 | `@Color/palette/mint/500` |
+| `color/action/danger` | 警示按钮底、字段错误描边 | `#FF6C3A` |
+| `color/action/danger-hover` | 警示按钮悬停 | `#F26637` |
+| `color/action/danger-pressed` | 警示按钮按下 | `#E66134` |
+| `color/action/gray-pressed` | 灰底及线框按下底 | `#E8EBEF` |
+| `color/status/warning/fg` | 库存等警示前景 | `#FF6C3A` |
+| `color/status/warning/bg` | 预警背景 | `#FF6C3A / 10%` |
+
+- 状态标签的各前景、背景及透明度优先复用 Figma Tag 母版。原稿必填星号保留独立颜色。
+- 占位文本保留原稿场景：名称 `#86909C`，两款搜索 `#999999`。不把现有通用占位变量批量改成场景色。
+- 线框与灰底按钮的禁用沿用默认配色；禁用整体透明度 60% 在组件根层应用。
+
+## Collection：`Shadow`
+
+- Mode：`Light`（本轮使用）。
+
+| Token 路径 | 含义 | Light 建议值 |
+| --- | --- | --- |
+| `color/shadow/popover` | 下拉阴影 | `rgba(0,0,0,0.10)` |
+| `color/shadow/modal` | 弹窗阴影 | `rgba(0,0,0,0.16)` |
 
 ## Collection：`Component`（按需）
 
-- Mode：`Default`。有独立维护需求时创建；默认直接绑定 `Semantic`、`Primitives`。
+- Mode：`Default`。有独立维护需求时再新增；默认直接绑定已有变量。
 
 | Token 路径 | 类型 | 含义 | Default 建议值 |
 | --- | --- | --- | --- |
-| `button/primary/bg/default` | Color | 主按钮默认底 | `@Semantic/color/action/primary` |
-| `input/border/error` | Color | 输入错误描边 | `@Semantic/color/status/danger/fg` |
-| `table/row/bg/selected` | Color | 选中行背景 | `@Semantic/color/bg/selected` |
+| `button/primary/bg/default` | Color | 主按钮默认底 | `@Color/color/action/primary` |
+| `input/border/error` | Color | 输入错误描边 | `@Color/color/action/danger` |
+| `table/row/bg/selected` | Color | 选中行背景 | `@Color/color/bg/selected` |
 
 ## Text Styles（Figma 样式，无 Mode）
 
 - 字体：`PingFang SC`，字距 0；先验证 Regular、Medium、Semibold 可加载。缺失时报告，在可用环境继续，勿静默替换原稿字族。
-- 数值列用等宽数字特性（字体支持时）。文字颜色单独绑定 `Semantic`。
+- 数值列用等宽数字特性（字体支持时）。文字颜色单独绑定 `Color`。原稿组件字号、行高以 [20 Components](20-components.md) 实测为准。
 
 | 样式路径 | 含义 | 建议值：字号 / 行高 / 字重 |
 | --- | --- | --- |
@@ -108,14 +111,13 @@
 
 | 样式路径 | 含义 | 建议值：X / Y / Blur / Spread / 颜色 |
 | --- | --- | --- |
-| `Elevation/Popover` | 下拉、悬浮面板 | `0 / 4 / 12 / 0` + `@Semantic/color/shadow/popover` |
-| `Elevation/Modal` | 弹窗、前景抽屉 | `0 / 12 / 32 / 0` + `@Semantic/color/shadow/modal` |
+| `Elevation/Popover` | 下拉、悬浮面板 | `0 / 4 / 12 / 0` + `@Shadow/color/shadow/popover` |
+| `Elevation/Modal` | 弹窗、前景抽屉 | `0 / 12 / 32 / 0` + `@Shadow/color/shadow/modal` |
 
-- 阴影类型 `DROP_SHADOW`。若环境不能在样式内绑定颜色，在节点 Effect 上绑定；仍不支持时创建 `/Light` 和 `/Dark` 两个样式，并在主题样例手动应用。
+- 阴影类型 `DROP_SHADOW`。若环境不能在样式内绑定颜色，在节点 Effect 上绑定。
 - 表格、普通面板不设阴影。默认描边 1；焦点环 2，距控件外边缘 2。
 
 ## 校验
 
-- Light / Dark 主色均解析为 `#2ABD90`，主色底前景 `#10251E`，对比度约 `6.73:1`。
-- 文字操作用 `color/action/text`；普通字和占位 ≥ `4.5:1`，大字、必要控件边界、图标、焦点 ≥ `3:1`。
+- 主按钮及警示按钮按确认稿使用白字；这两组品牌组合的小字对比度低于 `4.5:1`。正文、关键状态、必要焦点提示另行核对对比度。
 - 状态必须有文字或图标；库存预警、同步失败等状态各用独立语义色。
