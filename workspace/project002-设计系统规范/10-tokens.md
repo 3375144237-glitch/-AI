@@ -58,6 +58,7 @@
 | `color/bg/scrim` | 遮罩 | `rgba(0,0,0,0.40)` |
 | `color/text/primary` | 标题、正文、数据、灰底和线框按钮文字 | `#333333` |
 | `color/text/secondary` | 表头及需更高对比度的次要信息，按场景使用 | `#666666` |
+| `color/table/text/muted` | 表格次要文字；布局示意的说明与备注复用此变量 | `#999999` |
 | `color/text/on-action` | 主按钮及警示按钮前景 | `#FFFFFF` |
 | `color/border/subtle` | 线框按钮、输入、选择器和表格外框 | `#E5E5E5` |
 | `color/border/table` | 表格内行分隔线 | `#EBECF0` |
