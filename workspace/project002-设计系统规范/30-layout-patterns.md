@@ -1,6 +1,6 @@
 # 03 Layout Patterns｜布局模式
 
-[Figma 三档样例](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=174-3852)
+[Figma 五种布局示意](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=324-14818) · [原布局画板与三档业务样例](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=174-3852)
 
 ## 右侧产物分屏
 
@@ -23,7 +23,17 @@
 - 374 px 优先简版分页；574 / 1034 px 可用基础页码。总数、每页条数、跳页按任务决定；无翻页需求时隐藏。
 - 二次操作用详情区承接，保留主列表及筛选。关闭时回到同一条记录和浏览位置；这里描述设计预期。
 
+| 组合 | 可复用资产与场景 | 宽度和状态规则 |
+| --- | --- | --- |
+| 单栏 | [Layout / Columns](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=317-13437) 的 `single`；报告依次展示结论、依据与附件。 | 374 px 示例保留完整阅读顺序，正文换行，按内容增高。 |
+| 双栏 | 同一组件的 `equal` 对照同级信息；`main-detail` 把清单与同一商品的详情并排。 | 列距 16 px。等分列最小 252 px，主区最小 374 px、辅助区 320 px；放不下按阅读顺序换行。宿主变化时另切合适的表格变体。 |
+| 卡片网格 | [原技能列表](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=268-12454) 已接入 `Layout / Card Grid`，保留 12 个原实例。 | 卡宽 334 px，间距及外留边 16 px；容器宽 374 / 716 / 1066 px 分别排 1 / 2 / 3 列，最后一行左对齐。 |
+| 指标＋图表 | [原报告摘要](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=318-13572) 增加 `Chart / Bar` 设计补充。指标照原口径，图表按渠道比较同一明细的行数。 | 分类、值、单位及零基线明确；更换数据时重算条长。没有可比数据时保留有依据的指标、明细和对应反馈。 |
+| 表格＋筛选 | [原三档商品清单](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=174-3852) 复用 Input、Select、Table；[反馈示例](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=319-14626) 增加 374 px 无匹配及 574 px 读取失败。 | 无匹配显示 0 并可清空筛选；加载和首载失败保留条件、表头，不显示结果数；可重试时继续用同一条件。 |
+
 ## 验收
 
 - 对照三档样例的宽度、标签起点、控件间距、圆角、描边和列宽。
+- 结构示意按定稿标注：筛选高 32 px、到表格间距 12 px、表头高 40 px、数据行高 56 px，四行示例的表格总高 266 px。三项指标条高 70 px，附件行高 52 px；卡片实测 334 × 135 px、间距 16 px，图中等比缩小。报告正文和双栏随内容增高。
+- 示意浅绿底直接绑定 `color/table/status/green-bg`，使用 `#2ABD90` 的 10% 填充透明度；文字和描边保留各自的不透明度。
 - 进一步变窄时，收起次要工具或让筛选换行；长单行文案末尾省略。不要缩字号或挤压关键数值。

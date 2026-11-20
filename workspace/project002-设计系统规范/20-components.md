@@ -1,17 +1,17 @@
 # 20 Components｜售卖 AI Web 后台
 
-- 前置：[10 Tokens](10-tokens.md)；原稿：[Components 页设计稿](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=119-5743)。
-- 范围：浅色后台；右侧分屏按固定、展开、全屏验收。原稿没有的状态标为补充。不搭时间选择器、穿梭框或营销组件。
-- 记法：`>` 为父子，`[]` 可选，`*` 可重复；H 横向，V 纵向；尺寸单位 px。文案用 Text，图标用 Slot/Instance Swap，显隐用 Boolean。
-- 共用：隐藏可选层后不占位；状态写明含义，图标操作提供可访问名称。键盘焦点应可见；禁用原因写在附近。长文案验收不得靠缩字号。
-- 文字：不允许换行的标签、值、图标旁文案和页码，行高等于字号；允许换行的说明或正文，行高为字号的 1.5 倍。控件高度通过布局独立控制。两个分别单行的字段（如商品名、SKU）分别计算行高。
+- 前置：[10 Tokens](10-tokens.md)；原稿：[Components 页设计稿（只读）](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=203-37922)。
+- 范围：浅色后台；分屏按固定、展开、全屏验收；原稿未覆盖的状态标为设计补充。暂不搭时间选择器、穿梭框或营销组件。
+- 记法：`>` 父子，`[]` 可选，`*` 重复；H 横向，V 纵向；单位 px。文案用 Text，图标用 Slot 或 Instance Swap，显隐用 Boolean。
+- 共用：隐藏后不占位；状态有文字，图标操作有可访问名称，键盘焦点可见，禁用附近写原因。单行行高等于字号，多行行高为字号 × 1.5；控件高度独立设置，长文案不缩字号。
 
 ## Button｜按钮
 
 - **用途：** 查询、确认、关闭、明细和警示操作。跳转、视图切换和单选用对应控件。
 - **结构及命名：** `Button > [Leading Icon] + Label + [Trailing Icon] + [Loading indicator]`。保留 `Label`、`Show Leading`、`Show Trailing` 及前后图标 Slot。
 - **Variant：** `type=primary / secondary / ghost / danger / gray`。主按钮 `#2ABD90/#FFFFFF`；线框白底、`#E5E5E5` 内描边、`#333333` 字；文字默认 `#2ABD90` 且无底；警示 `#FF6C3A/#FFFFFF`；灰底 `#F5F7FA/#333333`。
-- **Size：** `small / medium / large`，高 28/32/40。常规实底最小宽约 60/64/96；纯文字无统一最小宽。查询及关闭实测 64×32、苹方 Regular 14/14；查询圆角 8，灰底关闭圆角 6；表格「明细」为单行苹方 Medium 12/12。原稿权限胶囊及 96×38 确认按钮保留场景规格。
+- **Size：** `small / medium / large`，高 28/32/40。常规圆角 6/8/8，灰底圆角 4/6/8；实底最小宽约 60/64/96，纯文字无统一最小宽。
+- **Typography：** 苹方 Regular 14/14；表格小号文字操作用 Medium 12/12。查询、关闭均为 64×32，圆角分别为 8、6；权限胶囊沿用原稿。
 - **State：** `default / hover / pressed / disabled / loading`，共 75 个。按下沿原色加深；文字按钮悬停和按下只变字色。禁用整体 60%；加载保宽且防重复操作。
 - **布局与文案：** 横向居中、宽 Hug、高 Fixed。常规左右内距 12，紧凑及大号 16；前后图标间隔 8；外距由业务父层控制。文案用动词加对象。高风险动作补确认；整排次操作不都用主按钮。
 - **验收：** [Button / Preview](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=28-3744)。
@@ -25,7 +25,8 @@
 - **图标、文案：** 搜索图标复用原稿，14×14；清除只用于已填搜索。标签、星号、帮助按需显示；已有外置标签时关内置标签。帮助与错误互斥。占位给示例，错误写明原因或下一步。
 - **布局：** 标签与框间隔 8，垂直居中；星号距文字 2。帮助或错误距框下沿 4，与框左边齐。单行框水平内距 12，搜索 8，图文层间距 8。沿用苹方和颜色、圆角、间距变量。
 - **业务布局：** 700 宽查询行列距 16；商品筛选三列等宽、组距 8，结果数 Hug；收藏夹搜索固定 200×28，标题栏右对齐，水平 16、垂直 12。
-- **验收：** [状态与用法](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=90-3876) · [同页原稿对照](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=144-10172)。
+- **验收：** [统一预览](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=90-3876)包含状态、用法和五组同页原稿对照：700 px 查询行，374/574/1034 px 商品筛选行，以及收藏夹标题栏。
+- **表单组合：** [查询行补充](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=276-12488)放在原有查询对照下，演示横排校验、提交中、374 px 窄栏叠排。复用 Input、Select、Button；ID 沿用定稿。窄版与补充状态仅作设计示例。
 
 ## Select｜选择器
 
@@ -33,7 +34,8 @@
 - **结构及命名：** `Select > Value + Chevron / Clear`；`Select / Menu > [Search] + Option*`。值 Fill，尾图标 16；标签及帮助由父表单管理。
 - **Variant / Size：** `style=field / filter`，均高 32、白底、1 px 内描边 `#E5E5E5`、单行苹方 12/12。表单圆角 8，水平内距 12、图文间距 8；筛选圆角 6，水平内距 8、图文间距 6。
 - **State：** 默认、占位、悬停、聚焦、展开、错误、禁用、多选摘要、清除。触发器悬停保留 `#E5E5E5` 描边；聚焦和展开用主绿，错误用橙。菜单含单选、搜索、多选、无匹配、加载、失败；选项高 32。悬停、选中用浅灰底及 `#333333` 文案，不加对号；禁用不可展开或选择。
-- **布局与文案：** 菜单 V，与触发器左边对齐、相距 4；窄栏建议最小宽 160，不超视口，多于 8 项滚动。搜索框下沿到选项区或反馈区 12（参考原稿商品筛选区到表格的间距），选项之间 4，文案统一左对齐。反馈可换行，苹方 12/18。多选保留一个可读值及 `+N`；未选择时用「请选择」或「全部状态」区分场景。
+- **定稿渠道菜单：** 面板与触发器左对齐、等宽、间隔 4 px，白底、8 px 圆角、无描边、无搜索框；阴影 `0 4 24 0`，黑色 12%。面板内距 6 px，选项高 32 px，选项之间无间隔，悬停项以浅灰底区分。见 [Foundations 对照](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=233-4794)。
+- **其他菜单场景（设计补充）：** 六个[菜单母版](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=105-4447)共用无描边外壳、6 px 内距及 `Elevation/Select Menu` 阴影。窄栏建议最小宽 160，不超视口，多于 8 项滚动。可搜索菜单保留搜索输入框自身的描边，输入框距选项区或反馈区 12 px，搜索结果选项间隔 4 px。反馈可换行，苹方 12/18。多选保留一个可读值及 `+N`；未选择时用「请选择」或「全部状态」区分场景。
 - **验收：** [Select / Preview](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=110-4754)。已核对表单及 374/574/1034 三档筛选行，含苹方菜单及反馈文案。
 
 ## Tag / Badge｜标签与角标
@@ -52,7 +54,7 @@
 - **State：** 根共 6 个有效组合，覆盖可用、加载、首页、末页、未知总量。加载保持宽度，首尾禁用对应箭头；省略号不可点。当前页须可识别，箭头必须有名称。
 - **当前页：** 浅绿底、`#2ABD90` 描边和 `#2ABD90` 数字，页码文字苹方 12/12。
 - **布局与文案：** H 右对齐，页码间距 4、组间距 8，距表格建议 16。总数未知时不显示猜测总量，不提供跳末页。
-- **参考：** [Element UI](https://element.eleme.cn/#/zh-CN/component/pagination) 的拆分方式：上一页、页码、下一页为基础，页数多时折叠；总数、每页条数、跳页按业务需求启用。产品窄分屏优先上一页、当前位置、下一页；无分页需求不常驻完整工具。
+- **取舍：** 窄栏保留上一页、当前位置和下一页；页数多时折叠，总数、每页条数、跳页按需开启。参考 [Element UI](https://element.eleme.cn/#/zh-CN/component/pagination)。
 - **验收：** [Pagination / Preview](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=128-8865)。原稿无完整分页；按业务分屏补充。
 
 ## Empty State｜空状态
@@ -66,16 +68,28 @@
 ## Table｜表格
 
 - **用途：** 适合跨列扫读及对比；单字段明细优先用描述列表。
-- **结构及命名：** `Table > [Toolbar] + Viewport + [Pagination]`；`Viewport > Header + Body`；复用 `Table / Header Cell`、`Table / Row`、`Table / Cell` 和 `Table / Toolbar`。状态复用 Tag，操作沿用同页原稿。
+- **结构及命名：** `Table > [Toolbar] + Viewport + [Pagination]`；`Viewport > Header + Body`。五种布局已接入 `Table / Row`、`Table / Header Cell` 和 `Table / Cell`。用行的 `Columns` 插槽组列，用单元格的 `Content` 插槽换文字或 Tag。固定操作格复用同一组件集。
 - **Variant / Size：** `layout=fixed / split / full / comparison / standalone`。实测宽 374/574/1034/352/860；表头高 40，数据行高 56，表格圆角 12。列宽与行分隔线按各原稿视图核对。
-- **State / 禁用：** `ready / loading / empty / error`；后三态保留表头。行支持 `header / default / hover / selected`。整行悬停和选中都用浅灰，直接压在灰底上的文案不用主绿；有独立底色的状态标签沿用语义配色。无权限动作隐藏或说明原因；加载时防重复提交。
+- **State / 禁用：** 五种布局各有 `ready / loading / empty / error`，共 20 个变体。后三态保留对应表头和区域高度；窄分屏保留操作列标题，表身仅显示反馈。跨宽度补齐状态属设计补充。行支持 `header / default / hover / selected`；整行悬停和选中用浅灰。无权限动作隐藏或说明原因；加载时防重复提交。
 - **图标与文案：** 短列名、数值、辅助信息，允许替换；区分 `0` 与 `—`，库存与同步分列。原稿未明确的排序不默认加排序图标。
-- **布局：** 根 V、表头和行 H；各列独立保存宽度及对齐，视口可裁切。固定/展开分屏已设置横滚并保留操作列的视觉样式；实际滚动固定、排序、分页、批量行为尚未验收。
-- **验收：** [Table / Preview](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=135-9759)。
+- **布局：** 有数据时保留原稿的列宽，和表身对齐。加载、无结果与失败时，表头列随实例均分可用宽度；374/574 px 分屏分别显示 3/5 个普通列，并预留右侧 83 px 操作列。分屏保留横滚和操作列样式；实际滚动固定、排序、分页及批量操作待联调。
+- **变量：** Table、表头、单元格、行和工具栏的原有配色、间距、圆角与边框已绑定。固定及展开分屏的操作列共用 `Elevation/Sticky Column`，保留原稿阴影。
+- **验收：** [Table / Preview 的状态区](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=135-10222)汇总 352 px 状态对照和其余四种宽度的代表样例。完整组合通过实例属性切换。
 
-## Figma执行顺序建议
+## Metric｜指标
 
-1. 在 `Foundations` 核对浅色变量、苹方及实际按钮/输入/表格取色，优先用现有变量路径。
-2. 在 `Components` 依次完善 Button、Input、Select、Tag/Badge、Pagination、Empty State、Table。每次先对照一个真实默认态，再补其余状态。
-3. 在同页用业务原稿行验证实例。核对相邻控件、对齐、内外距、颜色、描边、字和图标；再验收窄栏、展开和全屏。记录原稿没有的状态及待联调行为。
-4. 在 `Docs` 存用法入口。实例优先引用同页母版，保留原稿，发布前复查长文案、禁用及加载。
+- [单项和指标组预览](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=256-11852)。`Metric` 有常规和带说明两种；`Metric / Group` 沿用 574 px 定稿的一行四列、两行两列和三项报告摘要。名称及数值可编辑，详情型可补说明。标明单位及口径，区分零与缺失。
+
+## Modal｜弹窗
+
+- [单、双操作预览](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=259-12032)。权限定稿宽 602、白底、圆角 16、无阴影；「知道了」96×38。正文可替换，说明可隐藏；按钮组靠右，主操作最右并留 24。双操作为设计补充。关闭和焦点由开发联调。
+
+## Card｜业务卡片
+
+- [技能卡片和报告附件](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=268-12454)。技能卡 334 × 135 px，标题、说明、类别可编辑，第二标签及「使用」可隐藏。12 张卡片接入自动换行网格；附件已检查 574 和 374 px。
+
+布局容器、图表和筛选组合详见 [布局模式](30-layout-patterns.md#模块组合)。
+
+## Figma 验收
+
+先查现有变量、母版、变体及承载同一业务的预览；缺项并回原处。Components 左侧母版、右侧预览，组内顶对齐。预览用中文注明用途、状态、尺寸及设计补充；检查三档宽度、长文案和实例链接。
