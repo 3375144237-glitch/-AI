@@ -47,9 +47,9 @@
 | --- | --- | --- |
 | `color/bg/canvas` | 页面背景 | `#F7F8FA` |
 | `color/bg/surface` | 内容和表格 | `#FFFFFF` |
-| `color/bg/subtle` | 表头、弱背景及灰底按钮 | `#F5F7FA` |
+| `color/bg/subtle` | 表头、列表整行悬停/选中、灰底按钮 | `#F5F7FA` |
 | `color/bg/overlay` | 浮层表面 | `@Color/color/bg/surface` |
-| `color/bg/selected` | 选中底 | `#E5F4EE` |
+| `color/bg/selected` | 局部选中底；不用于整行列表 | `#E5F4EE` |
 | `color/bg/disabled` | 禁用底 | `#EFF1F3` |
 | `color/bg/scrim` | 遮罩 | `rgba(0,0,0,0.40)` |
 | `color/text/primary` | 标题、正文、数据、灰底和线框按钮文字 | `#333333` |
@@ -72,6 +72,7 @@
 - 状态标签的各前景、背景及透明度优先复用 Figma Tag 母版。原稿必填星号保留独立颜色。
 - 占位文本保留原稿场景：名称 `#86909C`，两款搜索 `#999999`。不把现有通用占位变量批量改成场景色。
 - 线框与灰底按钮的禁用沿用默认配色；禁用整体透明度 60% 在组件根层应用。
+- 局部控件同时使用浅绿底与主绿描边时，文字也使用 `color/action/primary`（`#2ABD90`），如当前页码。
 
 ## Collection：`Shadow`
 
@@ -90,22 +91,22 @@
 | --- | --- | --- | --- |
 | `button/primary/bg/default` | Color | 主按钮默认底 | `@Color/color/action/primary` |
 | `input/border/error` | Color | 输入错误描边 | `@Color/color/action/danger` |
-| `table/row/bg/selected` | Color | 选中行背景 | `@Color/color/bg/selected` |
+| `table/row/bg/selected` | Color | 选中行浅灰背景 | `@Color/color/bg/subtle` |
 
 ## Text Styles（Figma 样式，无 Mode）
 
 - 字体：`PingFang SC`，字距 0；先验证 Regular、Medium、Semibold 可加载。缺失时报告，在可用环境继续，勿静默替换原稿字族。
-- 数值列用等宽数字特性（字体支持时）。文字颜色单独绑定 `Color`。原稿组件字号、行高以 [20 Components](20-components.md) 实测为准。
+- 数值列用等宽数字特性（字体支持时）。文字颜色单独绑定 `Color`。按是否允许换行选行高：不允许换行 = 字号 × 1；允许换行 = 字号 × 1.5。允许换行但当前只有一行时，仍用 1.5 倍。行高不等于控件高度。
 
-| 样式路径 | 含义 | 建议值：字号 / 行高 / 字重 |
-| --- | --- | --- |
-| `Heading/Page` | 页面标题 | `24 / 32 / Semibold` |
-| `Heading/Section` | 区块标题 | `20 / 28 / Semibold` |
-| `Heading/Panel` | 面板、弹窗 | `16 / 24 / Medium` |
-| `Body/Default` | 正文、表单 | `14 / 20 / Regular` |
-| `Body/Emphasis` | 按钮、重点正文 | `14 / 20 / Medium` |
-| `Body/Dense` | 短字段、标签 | `12 / 16 / Regular` |
-| `Body/Dense Medium` | 密集表头、强调 | `12 / 16 / Medium` |
+| 样式路径 | 字号 / 字重 | 单行行高 | 允许换行行高 |
+| --- | --- | --- | --- |
+| `Heading/Page` | 24 / Semibold | 24 | 36 |
+| `Heading/Section` | 20 / Semibold | 20 | 30 |
+| `Heading/Panel` | 16 / Medium | 16 | 24 |
+| `Body/Default` | 14 / Regular | 14 | 21 |
+| `Body/Emphasis` | 14 / Medium | 14 | 21 |
+| `Body/Dense` | 12 / Regular | 12 | 18 |
+| `Body/Dense Medium` | 12 / Medium | 12 | 18 |
 
 ## Effect Styles（Figma 样式，通过颜色变量读 Mode）
 
