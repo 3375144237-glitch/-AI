@@ -1,6 +1,6 @@
 # 售卖 AI Web 后台设计系统规范
 
-v1.1 · 适用于商品、库存和运营管理等中高密度后台。
+v1.1 · 适用于商品、库存和运营管理等中高密度后台。[七个设计模块入口](00-design-delivery.md)
 
 依据 [Components 页设计稿](https://www.figma.com/design/7dVg1Mgu2O9Gnsg1mwrGRf?node-id=119-5743)的看板、商品表格、首页、输入和权限弹窗。本轮只维护浅色；分页和完整空态为补充。逐项实施见 [10 Tokens](10-tokens.md) 和 [20 Components](20-components.md)。Figma 评论未能读取（401）。
 
